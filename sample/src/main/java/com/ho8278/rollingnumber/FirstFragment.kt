@@ -34,6 +34,13 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.te.setInitialValue(0)
+        binding.buttonFirst.setOnClickListener {
+            val aa = Random.nextInt(0,Int.MAX_VALUE)
+            Log.d("ADG", "To: $aa")
+            binding.te.set(aa, true)
+        }
     }
 
     override fun onDestroyView() {
