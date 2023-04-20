@@ -1,8 +1,8 @@
 # RollingNumber
 
 ### TODO
-[] 숫자 뿐만 아니라 여러 텍스트도 가능하게끔 만들기.
-[] README 작성 마무리 하기.
+- [ ] 숫자 뿐만 아니라 여러 텍스트도 가능하게끔 만들기.
+- [ ] README 작성 마무리 하기.
 
 ### RollingNumber?
 가격 정보를 보여줄 때 변경되는 애니메이션을 보여주기 위한 Custom View.
