@@ -1,7 +1,5 @@
 package com.ho8278.rollingnumber
 
-import android.animation.ObjectAnimator
-import android.animation.PropertyValuesHolder
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -35,12 +33,28 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.te.setInitialValue(0)
         binding.buttonFirst.setOnClickListener {
-            val aa = Random.nextInt(0,Int.MAX_VALUE)
-            Log.d("ADG", "To: $aa")
-            binding.te.set(aa, true)
+            val aa = Random.nextInt(0, 1000000000)
+            binding.te.text = getPriceString(aa)
         }
+    }
+
+    private fun getPriceString(price: Int): String {
+        var priceText = price.toString()
+        var result = ""
+
+        if (priceText.length <= 3) return price.toString()
+
+        while (priceText.isNotEmpty()) {
+            if (priceText.length > 3) {
+                result = ",${priceText.takeLast(3)}$result"
+                priceText = priceText.dropLast(3)
+            } else {
+                result = "$priceText$result"
+                priceText = ""
+            }
+        }
+        return result
     }
 
     override fun onDestroyView() {

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RollingNumber">
+        <attr name="android:textSize" />
+        <attr name="android:textColor" />
+        <attr name="android:textStyle" />>
+        <attr name="android:text" />
+        <attr name="android:duration" />
+        <attr name="rollingNumberStyle" format="reference" />
+    </declare-styleable>
+
+    <style name="RollingNumberStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+</resources>

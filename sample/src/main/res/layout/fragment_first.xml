@@ -6,44 +6,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FirstFragment">
-
-    <com.ho8278.rollingnubmer.RollingNumber
-        android:id="@+id/test"
-        android:textSize="40sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/button_first"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/aaa"
-        android:text="0"
-        android:textSize="40sp"
-        app:layout_constraintTop_toTopOf="@id/test"
-        app:layout_constraintBottom_toBottomOf="@id/test"
-        app:layout_constraintStart_toEndOf="@id/test"
-        android:layout_marginStart="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
     <Button
         android:id="@+id/button_first"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/next"
-        app:layout_constraintTop_toBottomOf="@id/test"
+        app:layout_constraintTop_toBottomOf="@id/te"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         />
 
-    <com.ho8278.rollingnubmer.RollingNumberTextView
+    <com.ho8278.rollingnubmer.RollingNumber
         android:id="@+id/te"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:animateLayoutChanges="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </androidx.constraintlayout.widget.ConstraintLayout>
