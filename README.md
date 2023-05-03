@@ -1,5 +1,7 @@
 # RollingNumber
 
+![title_video](/title_video.gif)
+
 ### TODO
 - [ ] 숫자 뿐만 아니라 여러 텍스트도 가능하게끔 만들기.
 - [ ] README 작성 마무리 하기.
