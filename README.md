@@ -1,6 +1,6 @@
 # RollingNumber
 
-![title_video](/title_video.gif)
+![title](https://github.com/ho8278/RollingNumber/assets/34956721/1f1fc532-e05c-4266-b4ca-cf9cfefb0441)
 
 ### TODO
 - [ ] 숫자 뿐만 아니라 여러 텍스트도 가능하게끔 만들기.
