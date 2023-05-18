@@ -3,8 +3,7 @@
 ![title](https://github.com/ho8278/RollingNumber/assets/34956721/1f1fc532-e05c-4266-b4ca-cf9cfefb0441)
 
 ### TODO
-- [ ] 숫자 뿐만 아니라 여러 텍스트도 가능하게끔 만들기.
-- [ ] README 작성 마무리 하기.
+- [ ] 방향 조절 기능 추가 (UP, DOWN, NEAREST)
 
 ### RollingNumber?
 가격 정보를 보여줄 때 변경되는 애니메이션을 보여주기 위한 Custom View.
