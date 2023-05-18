@@ -1,5 +1,6 @@
 package com.ho8278.rollingnumber
 
+import android.animation.LayoutTransition
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -33,6 +34,11 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val layoutTransition = binding.root.layoutTransition.apply {
+            enableTransitionType(LayoutTransition.CHANGING)
+        }
+
+        binding.root.layoutTransition = layoutTransition
         binding.buttonFirst.setOnClickListener {
             val aa = Random.nextInt(0, 1000000000)
             binding.te.text = getPriceString(aa)
