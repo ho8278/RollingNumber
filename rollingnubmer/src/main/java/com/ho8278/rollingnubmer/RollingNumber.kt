@@ -11,11 +11,32 @@ import android.text.TextPaint
 import android.util.AttributeSet
 import android.view.View
 
-class RollingNumber @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null,
-    defStyleAttr: Int = R.attr.rollingNumberStyle
-) : View(context, attrs, defStyleAttr) {
+class RollingNumber : View {
+
+    constructor(context: Context) : super(context) {
+        init(context)
+    }
+
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
+        init(context, attrs)
+    }
+
+    constructor(context: Context, attrs: AttributeSet?, defStyleRes: Int) : super(
+        context,
+        attrs,
+        defStyleRes
+    ) {
+        init(context, attrs, defStyleRes)
+    }
+
+    constructor(
+        context: Context,
+        attrs: AttributeSet?,
+        defStyleRes: Int,
+        defStyleAttr: Int
+    ) : super(context, attrs, defStyleRes, defStyleAttr) {
+        init(context, attrs, defStyleRes, defStyleAttr)
+    }
 
     private val textPaint: TextPaint = TextPaint(Paint.ANTI_ALIAS_FLAG)
     private val rollingColumnManager = RollingColumnManager(textPaint)
@@ -35,13 +56,18 @@ class RollingNumber @JvmOverloads constructor(
 
     private var textColorStateList: ColorStateList? = null
 
-    init {
-        init(context, attrs, defStyleAttr)
-    }
-
-    private fun init(context: Context, attrs: AttributeSet?, defStyleAttr: Int) {
-        val obtainStyleable =
-            context.obtainStyledAttributes(attrs, R.styleable.RollingNumber, defStyleAttr, 0)
+    private fun init(
+        context: Context,
+        attrs: AttributeSet? = null,
+        defStyleRes: Int = R.attr.rollingNumberStyle,
+        defStyleAttr: Int = 0
+    ) {
+        val obtainStyleable = context.obtainStyledAttributes(
+            attrs,
+            R.styleable.RollingNumber,
+            defStyleRes,
+            defStyleAttr
+        )
         for (i in 0 until obtainStyleable.indexCount) {
             when (val styleable = obtainStyleable.getIndex(i)) {
                 R.styleable.RollingNumber_android_text -> {
