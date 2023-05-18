@@ -23,9 +23,9 @@ class RollingNumber @JvmOverloads constructor(
     private var prevText = ""
     var text = ""
         set(value) {
+            rollingColumnManager.setText(value)
             startRollingAnimation()
             prevText = field
-            rollingColumnManager.setText(value)
             field = value
             checkRequestLayout()
         }

@@ -20,6 +20,7 @@ internal class RollingColumn(private val textPaint: TextPaint) {
     private var prevText: Char = '0'
     var text: Char = '0'
         set(value) {
+            prevText = field
             if (!widthMap.contains(value)) {
                 boringLayoutMetrics =
                     BoringLayout.isBoring(value.toString(), textPaint, boringLayoutMetrics)
@@ -40,7 +41,6 @@ internal class RollingColumn(private val textPaint: TextPaint) {
                     widthMap[value] = width
                 }
             }
-            prevText = field
             field = value
         }
 
@@ -48,11 +48,12 @@ internal class RollingColumn(private val textPaint: TextPaint) {
         if (text.isDigit() && numbers.contains(text.digitToInt())) {
             val totalRange = computeAnimateRange()
             val originalLetterTranslation = (progress * totalRange) % getHeight()
-            val prevTopLetterTranslation = originalLetterTranslation - getHeight()
+            val nextLetterTranslation = originalLetterTranslation - getHeight()
+            val prevTextIndex = getValueToIndex(if (prevText.isDigit()) prevText else '0')
             val currentIdx =
-                (getValueToIndex(prevText) + getIndexOfYValue(progress * totalRange)) % numbers.size
+                (prevTextIndex + getIndexOfYValue(progress * totalRange)) % numbers.size
             val nextIdx = (currentIdx + 1) % numbers.size
-            canvas.withTranslation(y = prevTopLetterTranslation) {
+            canvas.withTranslation(y = nextLetterTranslation) {
                 drawText(numbers[nextIdx].toString(), 0f, -textPaint.fontMetrics.top, textPaint)
             }
             canvas.withTranslation(y = originalLetterTranslation) {
@@ -64,8 +65,11 @@ internal class RollingColumn(private val textPaint: TextPaint) {
     }
 
     private fun computeAnimateRange(): Int {
-        return if (!prevText.isDigit() || !text.isDigit()) getHeight()
-        else {
+        return if(!prevText.isDigit()) {
+            getIndexDistanceToTarget(0, text.digitToInt()) * getHeight()
+        } else if(!text.isDigit()) {
+            0
+        } else {
             getIndexDistanceToTarget(prevText.digitToInt(), text.digitToInt()) * getHeight()
         }
     }

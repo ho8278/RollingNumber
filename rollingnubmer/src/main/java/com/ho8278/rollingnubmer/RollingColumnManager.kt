@@ -7,11 +7,19 @@ internal class RollingColumnManager(private val textPaint: TextPaint) {
     private val columnList = mutableListOf<RollingColumn>()
 
     fun setText(text: String) {
-        columnList.clear()
-        text.forEach {
-            val column = RollingColumn(textPaint)
-            column.text = it
-            columnList.add(column)
+        val count = text.length - columnList.size
+        if (count > 0) {
+            repeat(count) {
+                columnList.add(RollingColumn(textPaint))
+            }
+        } else if (count < 0) {
+            repeat(-count) {
+                columnList.removeFirst()
+            }
+        }
+
+        for (i in 0..text.lastIndex) {
+            columnList[i].text = text[i]
         }
     }
 
